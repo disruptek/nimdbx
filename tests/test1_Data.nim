@@ -1,6 +1,7 @@
 # testCollatable.nim
 
-import unittest
+import pkg/balls
+
 import nimdbx/[Collatable, Data]
 
 

@@ -2,9 +2,11 @@
 
 {.experimental: "notnil".}
 
-import strformat, unittest
-import nimdbx
+import std/strformat
 
+import pkg/balls
+
+import nimdbx
 
 let DBPath = "test_db"
 let CollectionName = "stuff"

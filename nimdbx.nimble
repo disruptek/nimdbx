@@ -8,5 +8,6 @@ installDirs   = @["nimdbx", "libmdbx-dist"]
 
 # Dependencies
 
-requires "nim >= 1.4.2"
+requires "nim >= 1.9.3"
 requires "nimterop >= 0.6.13"
+requires "balls >= 4.0.0 & < 5.0.0"
