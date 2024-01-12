@@ -166,7 +166,7 @@ Build the wrapper generator.
 ```
 $ pushd deps/pkgs/nimterop*
 $ nim c --define:release --out=nimterop/toast nimterop/toast.nim
-$ nim c --define:release --out=nimterop/build/loaf nimterop/loaf.nim
+$ nim c --define:release --out=nimterop/loaf nimterop/loaf.nim
 $ popd
 ```
 Check that everything looks legit.
