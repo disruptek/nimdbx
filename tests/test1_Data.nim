@@ -143,7 +143,7 @@ suite "Collatable":
         check coll[2].boolValue == false
         check coll[3].boolValue == true
         check coll[4].stringValue == "hi"
-        check coll[5].type == NullType
+        check coll[5].kind == NullType
 
         # Make sure the `data` accessor does not allow the actual data to be mutated:
         var data = coll.data
@@ -185,7 +185,7 @@ suite "Collatable":
         check coll[2].boolValue == false
         check coll[3].boolValue == true
         check coll[4].stringValue == "hi"
-        check coll[5].type == NullType
+        check coll[5].kind == NullType
 
         # Make sure the `data` accessor does not allow the actual data to be mutated:
         var data = coll.data

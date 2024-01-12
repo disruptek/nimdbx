@@ -48,7 +48,7 @@ import private/[libmdbx, vals]
 ##
 ## To read the encoded values, call `asCollatable` on a `seq[byte]` containing the encoded data.
 ## Then you can iterate over it with a `for` loop, or subscript it to get items by position.
-## The items are expressed as type `Item`, a variant object with a `type` field that indicates
+## The items are expressed as type `Item`, a variant object with a kind field that indicates
 ## the data type, and type-specific fields containing the values.
 
 
@@ -293,7 +293,7 @@ type CollatableType* = enum
 
 type Item* = object
     ## A value read from a Collatable.
-    case `type`: CollatableType
+    case kind*: CollatableType
         of NullType:    discard
         of BoolType:    boolValue*: bool
         of IntType:     intValue*: int64
@@ -319,18 +319,18 @@ iterator items*(coll: CollatableAny): Item {.closure.} =
         pos += 1
         case tag:
             of NullTag:
-                item.type = NullType
+                item = Item(kind: NullType)
             of FalseTag:
-                item.type = BoolType
+                item = Item(kind: BoolType)
                 item.boolValue = false
             of TrueTag:
-                item.type = BoolType
+                item = Item(kind: BoolType)
                 item.boolValue = true
             of NegIntTags..PosIntTags+0x0f:
-                item.type = IntType
+                item = Item(kind: IntType)
                 item.intValue = readInt(coll.data, tag, pos)
             of StringTags..StringTags+0x0f:
-                item.type = StringType
+                item = Item(kind: StringType)
                 let start = pos
                 while coll.data[pos] != 0:
                     pos += 1
@@ -351,7 +351,7 @@ func `[]`*(coll: CollatableAny, index: Natural): Item =
         if index == 0:
             return item
         index -= 1
-    return Item(type: NullType)
+    return Item(kind: NullType)
 
 
 #%%%%%%%% STRING CONVERSION:
@@ -359,7 +359,7 @@ func `[]`*(coll: CollatableAny, index: Natural): Item =
 
 func `$`*(o: Item): string =
     ## Converts an item to a string, in JSON format.
-    case o.type:
+    case o.kind:
         of NullType:    return "null"
         of BoolType:    return $o.boolValue
         of IntType:     return $o.intValue
