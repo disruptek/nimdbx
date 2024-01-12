@@ -293,7 +293,7 @@ type CollatableType* = enum
 
 type Item* = object
     ## A value read from a Collatable.
-    case type*: CollatableType
+    case `type`: CollatableType
         of NullType:    discard
         of BoolType:    boolValue*: bool
         of IntType:     intValue*: int64
