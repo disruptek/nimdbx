@@ -43,7 +43,7 @@ type
         ## A callback given to an IndexFunc, to be called by that function for each entry to add
         ## to the index.
 
-    IndexFunc* = proc(value: DataOut, emit: EmitFunc) {.noSideEffect.}
+    IndexFunc* = proc(value: DataOut, emit: EmitFunc)
         ## A user-supplied function that's given a value from the source Collection
         ## and calls the `emit` function zero or more times with a key and value to be indexed.
         ## (Note that multiple keys/values may be indexed.)

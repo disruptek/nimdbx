@@ -138,7 +138,7 @@ proc i_put(t: CollectionTransaction, key: Data, value: Data, mdbxFlags: MDBX_put
             throw result
 
 
-proc del*(t: CollectionTransaction, key: Data): bool {.gcsafe, discardable.}
+proc del*(t: CollectionTransaction, key: Data): bool {.discardable.}
 
 
 proc put*(t: CollectionTransaction, key: Data, value: Data) =
