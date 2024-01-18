@@ -10,4 +10,4 @@ installDirs   = @["nimdbx", "libmdbx-dist"]
 
 requires "nim >= 1.9.3"
 requires "https://github.com/uncommoncorrelation/nimterop.git"
-requires "https://github.com/disruptek/balls >= 4.0.0 & < 5.0.0"
+requires "https://github.com/disruptek/balls >= 4.0.0"
